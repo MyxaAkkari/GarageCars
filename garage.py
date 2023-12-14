@@ -1,5 +1,6 @@
 import os
 import json
+from icecream import ic
 
 def clearScreen():
     """Clears the terminal."""
@@ -19,11 +20,11 @@ def save_2_file():
 
 def menu():
     """Prints the menu, returns user selection."""
-    print('V -> View all cars.')
-    print('A -> Add a new car.')
-    print('E -> Edit a car.')
-    print('D -> Delete a car.')
-    print('Q -> Quit program.')
+    ic('V -> View all cars.')
+    ic('A -> Add a new car.')
+    ic('E -> Edit a car.')
+    ic('D -> Delete a car.')
+    ic('Q -> Quit program.')
     return input('What would you like to do?: ').lower()
 
 def menuAction(selection):
@@ -33,29 +34,29 @@ def menuAction(selection):
         addCar()
     elif selection == 'd': 
         delCar() 
-        print("Car deleted!")
+        ic("Car deleted!")
     elif selection == 'e': editCar()
     elif selection == 'q': 
         save_2_file()
-        print("Bye Bye!")
+        ic("Bye Bye!")
         exit()
 
 def addCar():
     """Add a car to the file."""
     cars.append({"brand":input("Car Brand: "), "model":input("Car model: "), "color":input("Car color: ")})
-    print("Car added.")
+    ic("Car added.")
 
 def printcars():
     """Prints current cars in list with index/number."""
     #Thanks Amir xD
-    i = 0
+    number = 0
     for obj in cars:
-        print("----------------")
-        print(f"Number: {str(i)}")
-        print(f"Brand: {obj['brand']}")
-        print(f"Model: {obj['model']}")
-        print(f"Color: {obj['color']}")
-        i += 1
+        ic("----------------")
+        ic(number)
+        ic(obj['brand'])
+        ic(obj['model'])
+        ic(obj['color'])
+        number += 1
 
 def delCar():
     """Delete a car by using its index in list."""
